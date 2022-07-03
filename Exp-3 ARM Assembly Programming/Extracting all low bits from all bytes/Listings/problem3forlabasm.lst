@@ -1,0 +1,103 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000         *       Combine          the low four bits of each of th
+e four consecutive bytes
+    2 00000000                 TTL              storelowfourbits
+    3 00000000                 AREA             lowfourbit,CODE,READONLY
+    4 00000000                 ENTRY
+    5 00000000         START
+    6 00000000 E59F5050        LDR              R5,MASK
+    7 00000004 E59F0054        LDR              R0,=LIST
+    8 00000008 E5D01000        LDRB             R1,[R0]
+    9 0000000C E5F02004        LDRB             R2,[R0,#4]!
+   10 00000010 E5F03004        LDRB             R3,[R0,#4]!
+   11 00000014 E5F04004        LDRB             R4,[R0,#4]!
+   12 00000018 E0011005        AND              R1,R1,R5
+   13 0000001C E0022005        AND              R2,R2,R5
+   14 00000020 E0033005        AND              R3,R3,R5
+   15 00000024 E0044005        AND              R4,R4,R5
+   16 00000028 E1A01601        MOV              R1,R1,LSL #12
+   17 0000002C E1A02402        MOV              R2,R2,LSL #8
+   18 00000030 E1A03203        MOV              R3,R3,LSL #4
+   19 00000034 E0816002        ADD              R6,R1,R2
+   20 00000038 E0866003        ADD              R6,R6,R3
+   21 0000003C E0866004        ADD              R6,R6,R4
+   22 00000040 E58F6014        STR              R6, RESULT
+   23 00000044 EAFFFFFE 
+                       STOP    B                STOP
+   24 00000048 0000003A 
+              0000001B 
+              0000002C 
+              0000001D LIST    DCD              &3A,&1B,&2C,&1D
+   25 00000058                 ALIGN
+   26 00000058 0F 00   MASK    DCW              &000F
+   27 0000005A 00 00           ALIGN
+   28 0000005C 00000000 
+                       RESULT  DCD              0
+   29 00000060                 END
+              00000000 
+Command Line: --debug --xref --diag_suppress=9931 --apcs=interwork --depend=.\o
+bjects\problem3forlabasm.d -o.\objects\problem3forlabasm.o -IC:\Keil_v5\ARM\RV3
+1\INC -IC:\Keil_v5\ARM\CMSIS\Include -IC:\Keil_v5\ARM\INC\Philips --predefine="
+__EVAL SETA 1" --predefine="__UVISION_VERSION SETA 524" --list=.\listings\probl
+em3forlabasm.lst problem3forlabasm.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+LIST 00000048
+
+Symbol: LIST
+   Definitions
+      At line 24 in file problem3forlabasm.s
+   Uses
+      At line 7 in file problem3forlabasm.s
+Comment: LIST used once
+MASK 00000058
+
+Symbol: MASK
+   Definitions
+      At line 26 in file problem3forlabasm.s
+   Uses
+      At line 6 in file problem3forlabasm.s
+Comment: MASK used once
+RESULT 0000005C
+
+Symbol: RESULT
+   Definitions
+      At line 28 in file problem3forlabasm.s
+   Uses
+      At line 22 in file problem3forlabasm.s
+Comment: RESULT used once
+START 00000000
+
+Symbol: START
+   Definitions
+      At line 5 in file problem3forlabasm.s
+   Uses
+      None
+Comment: START unused
+STOP 00000044
+
+Symbol: STOP
+   Definitions
+      At line 23 in file problem3forlabasm.s
+   Uses
+      At line 23 in file problem3forlabasm.s
+Comment: STOP used once
+lowfourbit 00000000
+
+Symbol: lowfourbit
+   Definitions
+      At line 3 in file problem3forlabasm.s
+   Uses
+      None
+Comment: lowfourbit unused
+6 symbols
+340 symbols in table

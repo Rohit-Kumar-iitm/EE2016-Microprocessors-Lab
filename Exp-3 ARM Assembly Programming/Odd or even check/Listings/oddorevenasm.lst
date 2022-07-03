@@ -1,0 +1,56 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000         *       To               find out whether a given number
+(of32bitsize) is odd or even
+    2 00000000                 TTL              OddOrEven
+    3 00000000                 AREA             ODDEVEN, CODE, READONLY
+    4 00000000         START
+    5 00000000 E3A00007        MOV              R0, #7      ;R0 = 7 (decimal)
+    6 00000004 E2100001        ANDS             R0, #1      ;Bitwise AND operat
+                                                            ion of the value in
+                                                             R0 with 0x00000001
+                                                            
+    7 00000008 EF000011        SWI              &11
+    8 0000000C         FINISH
+    9 0000000C                 END
+Command Line: --debug --xref --diag_suppress=9931 --apcs=interwork --depend=.\o
+bjects\oddorevenasm.d -o.\objects\oddorevenasm.o -IC:\Keil_v5\ARM\RV31\INC -IC:
+\Keil_v5\ARM\CMSIS\Include -IC:\Keil_v5\ARM\INC\Philips --predefine="__EVAL SET
+A 1" --predefine="__UVISION_VERSION SETA 524" --list=.\listings\oddorevenasm.ls
+t oddorevenasm.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+FINISH 0000000C
+
+Symbol: FINISH
+   Definitions
+      At line 8 in file oddorevenasm.s
+   Uses
+      None
+Comment: FINISH unused
+ODDEVEN 00000000
+
+Symbol: ODDEVEN
+   Definitions
+      At line 3 in file oddorevenasm.s
+   Uses
+      None
+Comment: ODDEVEN unused
+START 00000000
+
+Symbol: START
+   Definitions
+      At line 4 in file oddorevenasm.s
+   Uses
+      None
+Comment: START unused
+3 symbols
+335 symbols in table
